@@ -12,7 +12,40 @@ The answer is in the KafkaRoute.java file.  Details below:
         schemaRegistryProperties.put("basic.auth.user.info", apiKeySchemaRegistry + ":" + apiSecretSchemaRegistry);
 ```
 
-The full file is below
+The api keys and secrets are stored and read from the properties file.  You have to put these into the schemaRegistryProperties hashmap and pass this in as additional properties.
+
+```
+       // First route: consume from normal topic, write to Avro topic
+        from(kafkaConsumerUrl)
+                .unmarshal().json(JsonLibrary.Jackson, AvroMessage.class)
+                .to(kafka(destinationTopic)
+                        .brokers(bootstrapServers)
+                        .schemaRegistryURL(schemaRegistryUrl)
+                        .additionalProperties(schemaRegistryProperties)
+                .serializerClass(KAFKA_VALUE_SERIALIZER)
+                        .securityProtocol(KAFKA_SECURITY_PROTOCOL)
+                        .saslMechanism(KAFKA_SASL_MECHANISM)
+                        .saslJaasConfig(jaasConfigBootstrap)
+                        )
+                .setBody(constant("done"));
+
+        // Second route: consume from Avro topic and log
+        from(kafka(destinationTopic)
+                .brokers(bootstrapServers)
+                .schemaRegistryURL(schemaRegistryUrl)
+                        .additionalProperties(schemaRegistryProperties)
+                        .specificAvroReader(true)
+                .valueDeserializer(KAFKA_VALUE_DESERIALIZER)
+                .securityProtocol(KAFKA_SECURITY_PROTOCOL)
+                .saslMechanism(KAFKA_SASL_MECHANISM)
+                .saslJaasConfig(jaasConfigBootstrap) // JAAS config for Kafka broker
+                //.saslJaasConfig(jaasConfigSchemaRegistry)
+        )
+````
+
+Where is this documented?  As far as I know its only documented here in this very github repo readme.
+
+The full file is below   
 
 ```java
 package org.acme;
