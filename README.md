@@ -14,7 +14,7 @@ The answer is in the KafkaRoute.java file.  Details below:
 
 The api keys and secrets are stored and read from the properties file.  You have to put these into the schemaRegistryProperties hashmap and pass this in as additional properties.
 
-```
+```java
        // First route: consume from normal topic, write to Avro topic
         from(kafkaConsumerUrl)
                 .unmarshal().json(JsonLibrary.Jackson, AvroMessage.class)
