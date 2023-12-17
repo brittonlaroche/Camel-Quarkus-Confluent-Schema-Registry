@@ -1,4 +1,4 @@
-# camel-quarkus kafka with schema-registry example
+# camel-quarkus kafka with schema-registry example for Confluent Cloud
 
 This example shows how camel-quarkus-kafka can be used in combination with confluent schema-registry.
 
