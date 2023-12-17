@@ -157,7 +157,7 @@ If you are seeing magic byte errors when consumers are using the schema, this is
 
 All the neccessary parameters are set in the src/main/resources/application.properties file.  I changed the keys and secrets, and other values by shifting and changing numbers in the sequence but left it filled out so that everyone can see clearly what goes where. Do not worry none of the keys and secrets actually work.  Using it directly with out changes should give you a 404 error followed by a 401 unathorized if you update the kafka.bootstrap.servers properly with out setting the keys and secrets.
 
-To verify weather or not the schema id is sett correctly use the kafka-avro-console-consumer example below:   
+To verify weather or not the schema id is set correctly use the kafka-avro-console-consumer example below:   
    
 ```
 kafka-avro-console-consumer --bootstrap-server <bootstrap>:<host> \
