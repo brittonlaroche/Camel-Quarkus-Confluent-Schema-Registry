@@ -164,7 +164,8 @@ Helpful links to getstarted with rest produce v3
 [https://docs.confluent.io/cloud/current/kafka-rest/krest-qs.html](https://docs.confluent.io/cloud/current/kafka-rest/krest-qs.html)   
 [https://docs.confluent.io/cloud/current/api.htm](https://docs.confluent.io/cloud/current/api.htm)
 
-The rest of this readme and original source code came frrom the following github [https://github.com/tstuber/camel-quarkus-kafka-schema-registry](https://github.com/tstuber/camel-quarkus-kafka-schema-registry)   
+The rest of this readme and original source code came frrom the following github   
+[https://github.com/tstuber/camel-quarkus-kafka-schema-registry](https://github.com/tstuber/camel-quarkus-kafka-schema-registry)   
 Many thanks for his example!   
 
 * You need to have a local kafka cluster running. You can use the provided `docker-compose.yml`.
