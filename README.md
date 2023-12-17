@@ -1,6 +1,6 @@
 # camel-quarkus kafka with schema-registry example for Confluent Cloud
 
-This example shows how camel-quarkus-kafka can be used in combination with confluent schema-registry with the Confluent Cloud.
+This example shows how camel-quarkus-kafka can be used in combination with confluent schema-registry with the Confluent Cloud. It also shows you how to verify that the schema is set correctly using the kafka-avro-console-consumer
 
 ## Previously Undocumented Configuartion Settings
 Setting the API key and secret for the confluent cloud is not something I could find and example of anywhere.  You need to include the schema registry url, and the apikey and secret of your confluent cloud environment.  But how?  What properties do you set?   
@@ -157,10 +157,22 @@ If you are seeing magic byte errors when consumers are using the schema, this is
 
 All the neccessary parameters are set in the src/main/resources/application.properties file.  I changed the keys and secrets, and other values by shifting and changing numbers in the sequence but left it filled out so that everyone can see clearly what goes where. Do not worry none of the keys and secrets actually work.  Using it directly with out changes should give you a 404 error followed by a 401 unathorized if you update the kafka.bootstrap.servers properly with out setting the keys and secrets.
 
+To verify weather or not the schema id is sett correctly use the kafka-avro-console-consumer example below:   
+   
+```
+kafka-avro-console-consumer --bootstrap-server <bootstrap>:<host> \
+--property basic.auth.credentials.source="USER_INFO" \
+--property print.key=true --property print.schema.ids=true \
+--property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
+--property schema.registry.url=$SCHEMA_REGISTRY_URL \
+--consumer.config /Users/vicky/creds.config \
+--topic <topic-name> --from-beginning \
+--property schema.registry.basic.auth.user.info=$SR_APIKEY:$SR_APISECRET
+```
 
 ## Preconditions
-If you do not have a local cluster then you need a confluent cloud cluster running.  If using rest you will need to read the information on the Rest produce V3 documentation.
-Helpful links to getstarted with rest produce v3   
+If you do not have a local cluster then you need a confluent cloud cluster running.  If using REST API you will need to read the information on the REST produce V3 documentation.
+Helpful links to getstarted with REST produce v3   
 [https://docs.confluent.io/cloud/current/kafka-rest/krest-qs.html](https://docs.confluent.io/cloud/current/kafka-rest/krest-qs.html)   
 [https://docs.confluent.io/cloud/current/api.htm](https://docs.confluent.io/cloud/current/api.htm)
 
