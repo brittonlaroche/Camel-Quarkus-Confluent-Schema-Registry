@@ -152,6 +152,7 @@ public class KafkaRoute extends EndpointRouteBuilder {
 ```
 
 I hope this is helpful!  If you do not set this then the schema resgitry will not use the correct schema in the first 5 bytes. First byte is the magic number. Second 4 bytes is the SchemaID.   
+
 If you are seeing magic byte errors when consumers are using the schema, this is why.  If you do not connect to the schema registry the schema id is not set when writing data to the Kafka topic.   
 
 All the neccessary parameters are set in the src/main/resources/application.properties file.  I changed the keys and secrets, and other values by shifting and changing numbers in the sequence but left it filled out so that everyone can see clearly what goes where. Do not worry none of the keys and secrets actually work.  Using it directly with out changes should give you a 404 error followed by a 401 unathorized if you update the kafka.bootstrap.servers properly with out setting the keys and secrets.
@@ -162,6 +163,9 @@ If you do not have a local cluster then you need a confluent cloud cluster runni
 Helpful links to getstarted with rest produce v3   
 [https://docs.confluent.io/cloud/current/kafka-rest/krest-qs.html](https://docs.confluent.io/cloud/current/kafka-rest/krest-qs.html)   
 [https://docs.confluent.io/cloud/current/api.htm](https://docs.confluent.io/cloud/current/api.htm)
+
+The rest of this readme and original source code came frrom the following github [https://github.com/tstuber/camel-quarkus-kafka-schema-registry](https://github.com/tstuber/camel-quarkus-kafka-schema-registry)   
+Many thanks for his example!   
 
 * You need to have a local kafka cluster running. You can use the provided `docker-compose.yml`.
 * You need access to confluent.io maven repo: https://packages.confluent.io/maven/. You might need to add it to your `settings.xml`
