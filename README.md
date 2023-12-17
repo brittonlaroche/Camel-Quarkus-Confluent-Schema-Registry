@@ -2,7 +2,7 @@
 
 This example shows how camel-quarkus-kafka can be used in combination with confluent schema-registry.
 
-## Previously undocumented secrets
+## Previously Undocumented Configuartion Settings
 This is not something I could find and example of anywhere.  You need to include the schema registry url, and the apikey and secret of your confluent cloud environment.  But how?  What properties do you set?   
 The answer is in the KafkaRoute.java file.  Details below:   
 
