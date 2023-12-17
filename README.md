@@ -1,9 +1,9 @@
 # camel-quarkus kafka with schema-registry example for Confluent Cloud
 
-This example shows how camel-quarkus-kafka can be used in combination with confluent schema-registry.
+This example shows how camel-quarkus-kafka can be used in combination with confluent schema-registry with the Confluent Cloud.
 
 ## Previously Undocumented Configuartion Settings
-This is not something I could find and example of anywhere.  You need to include the schema registry url, and the apikey and secret of your confluent cloud environment.  But how?  What properties do you set?   
+Setting the API key and secret for the confluent cloud is not something I could find and example of anywhere.  You need to include the schema registry url, and the apikey and secret of your confluent cloud environment.  But how?  What properties do you set?   
 The answer is in the KafkaRoute.java file.  Details below:   
 
 ```java
