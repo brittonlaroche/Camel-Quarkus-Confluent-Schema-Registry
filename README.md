@@ -152,7 +152,9 @@ public class KafkaRoute extends EndpointRouteBuilder {
 ```
 
 I hope this is helpful!  If you do not set this then the schema resgitry will not use the correct schema in the first 5 bytes. First byte is the magic number. Second 4 bytes is the SchemaID.   
-If you are seeing magic byte errors when consumers are using the schema, this is why.
+If you are seeing magic byte errors when consumers are using the schema, this is why.  If you do not connect to the schema registry the schema id is not set when writing data to the Kafka topic.   
+
+All the neccessary parameters are set in the src/main/resources/application.properties file.  I changed the keys and secrets, and other values by shifting and changing numbers in the sequence but left it filled out so that everyone can see clearly what goes where. Do not worry none of the keys and secrets actually work.  Using it directly with out changes should give you a 404 error followed by a 401 unathorized if you update the kafka.bootstrap.servers properly with out setting the keys and secrets.
 
 
 ## Preconditions
