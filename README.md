@@ -158,6 +158,11 @@ All the neccessary parameters are set in the src/main/resources/application.prop
 
 
 ## Preconditions
+If you do not have a local cluster then you need a confluent cloud cluster running.  If using rest you will need to read the information on the Rest produce V3 documentation.
+Helpful links to getstarted with rest produce v3   
+[https://docs.confluent.io/cloud/current/kafka-rest/krest-qs.html](https://docs.confluent.io/cloud/current/kafka-rest/krest-qs.html)
+[https://docs.confluent.io/cloud/current/api.htm](https://docs.confluent.io/cloud/current/api.htm)
+
 * You need to have a local kafka cluster running. You can use the provided `docker-compose.yml`.
 * You need access to confluent.io maven repo: https://packages.confluent.io/maven/. You might need to add it to your `settings.xml`
 
