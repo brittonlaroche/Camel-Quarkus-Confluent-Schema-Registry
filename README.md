@@ -170,6 +170,10 @@ kafka-avro-console-consumer --bootstrap-server <bootstrap>:<host> \
 --property schema.registry.basic.auth.user.info=$SR_APIKEY:$SR_APISECRET
 ```
 
+If you don't have the kafka-avro-console-consumer binary you can get it by downloading the CP platform binaries.  It will be in the bin folder.  I obtained it from 7.5.1   
+
+[https://www.confluent.io/previous-versions/](https://www.confluent.io/previous-versions/)
+
 ## Preconditions
 If you do not have a local cluster then you need a confluent cloud cluster running.  If using REST API you will need to read the information on the REST produce V3 documentation.
 Helpful links to getstarted with REST produce v3   
